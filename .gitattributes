@@ -1,0 +1,10 @@
+# Keep Linux line endings (LF) for files that run on Linux (Docker, WSL, HPC, GitHub Actions).
+# Windows line endings (CRLF) in a Bash script make it fail with "$'\r': command not found".
+* text=auto eol=lf
+
+# binary files: never touch
+*.png binary
+*.xlsx binary
+*.gz binary
+*.parquet binary
+*.joblib binary
