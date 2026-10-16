@@ -1,0 +1,11 @@
+# conda alternative to the Docker image:
+#   conda env create -f environment.yml
+#   conda activate cancer-origin
+name: cancer-origin
+channels:
+  - conda-forge
+dependencies:
+  - python=3.13
+  - pip
+  - pip:
+      - -r requirements.txt
