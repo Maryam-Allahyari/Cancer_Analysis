@@ -216,3 +216,15 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# POG570 data: research use only, must never be committed
+Data/*
+!Data/Raw/
+Data/Raw/*
+!Data/Raw/.gitkeep
+
+# pipeline outputs (can be rebuilt by running the pipeline)
+results/
+work/
+.nextflow/
+.nextflow.log*
