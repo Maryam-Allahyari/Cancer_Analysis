@@ -1,0 +1,1 @@
+patient_id,true_type,predicted_type,biopsy_group,gene_id,hgvs_p,hgvs_c,effect,af_tumour,variant_class,civic_evidence,clinvar_somatic,cosmic_or_cbioportal,amp_tier,typical_cancer_types,supports_true_type,supports_predicted_type,sources,curator_notes

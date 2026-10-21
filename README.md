@@ -131,6 +131,23 @@ What I take from this so far:
 - [ ] CI running on GitHub
 - [ ] Final report
 
+## Add-on: variant annotation of misclassified cases
+
+**Progress:** worksheets generated; manual curation in progress.
+
+A model can say a tumour looks like pancreatic cancer, but a genetics lab would also check the patient's variants. This add-on asks: **for the patients the model got wrong, do their somatic variants support the true cancer type, the predicted one, or neither?**
+
+`src/annotate_cases.py` takes the 7 misclassified test patients, extracts their protein-changing variants from the raw mutation file (same QC as `clean.py`), and builds an annotation worksheet for the variants in driver genes. `src/gather_evidence.py` then fills in the factual evidence from open databases (CIViC, ClinVar, cBioPortal/TCGA and UniProt). Interpretation is done by hand: each variant is reviewed (with COSMIC checked manually) and given an AMP/ASCO/CAP tier. Each case gets a short review following a lab-style report checklist.
+
+```bash
+python src/annotate_cases.py
+python src/gather_evidence.py
+```
+
+The procedure, evidence sources and templates are in [docs/annotation_guide.md](docs/annotation_guide.md) and [docs/templates/](docs/templates/). Patient-level worksheets and case reviews stay in `results/annotation/`, which is not committed, because the POG570 data can't be redistributed.
+
+First look, before curation: 360 protein-changing variants across the 7 patients, 11 of them in driver genes. Two errors involve tumours whose label groups different histologies, two patients carry variants typical of their true cancer type, and three have rare tumour types, two with no driver-gene variants.
+
 ## Limitations
 
 These will be revisited once results are in, but some are clear from the start:
